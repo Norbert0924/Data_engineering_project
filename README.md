@@ -80,6 +80,11 @@ LINES TERMINATED BY '\r\n'
 IGNORE 1 LINES
 (Customer_ID, Customer_Name, Segment);
 
+
+
+### Database diagram
+
+
 # ANALYTICS
 
 ## Quetions:
@@ -175,3 +180,50 @@ Using (Product_ID)
 Where Product_Name like '%Nokia%' and Country like "United States"
 group by "Nokia", "United States";
 -- Answer: United States	Nokia	4
+
+
+## Recommended questions:
+
+I 
+-- View1:
+-- Does US have higher Sales than Albania?
+
+select Country, round(sum(Sales))
+from orders
+where Country like "United States"  or Country like "Albania"
+group by Country;
+
+create view country_vs_sales
+as select Country, round(sum(Sales))
+from orders
+where Country like "United States"  or Country like "Albania"
+group by Country;
+
+select *  from country_vs_sales;
+
+-- View2
+-- Which segment in which product category has the highest profit?
+
+select Segment, Category, Profit
+from orders
+left join customer
+using(Customer_ID)
+left join product
+using(Product_ID)
+Group by Segment, Category
+Order by Profit desc
+Limit 1;
+
+-- View 2:
+create view segment_vs_category_profit
+as select Segment, Category, Profit
+from orders
+left join customer
+using(Customer_ID)
+left join product
+using(Product_ID)
+Group by Segment, Category
+Order by Profit desc
+Limit 1;
+
+select * from segment_vs_category_profit;
