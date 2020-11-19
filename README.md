@@ -1,5 +1,6 @@
 # Operational layer
 
+
 In order to create my relational dataset I created the following tables:
 
 create schema assignment;
