@@ -1,7 +1,7 @@
-##OPERATIONAL LAYER
+# OPERATIONAL LAYER
 
 
-In order to create my dataset I used 
+In order to create my relational dataset I created the following tables:
 
 create schema assignment;
 use assignment;
@@ -44,7 +44,13 @@ Product_Name varchar(200),
 Primary key(Product_ID));
 
 
-After creating schemas, the tables are still empty. We need to fill in with data from CSV into the table:
+After creating schemas, the tables are still empty. We need to fill in with data from CSVs into the tables:
+
+The following CSV data tables were put into this command:
+
+https://github.com/Norbert0924/DE_SQL_CLASS/blob/main/product.csv
+https://github.com/Norbert0924/DE_SQL_CLASS/blob/main/orders.csv
+https://github.com/Norbert0924/DE_SQL_CLASS/blob/main/customer.csv
 
 
 LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/orders.csv'
