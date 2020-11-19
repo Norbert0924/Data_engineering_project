@@ -80,4 +80,77 @@ LINES TERMINATED BY '\r\n'
 IGNORE 1 LINES
 (Customer_ID, Customer_Name, Segment);
 
+# ANALYTICS
 
+Which city had the most orders?
+
+-- 407_New York City
+select count(city) as Number_of_orders, city
+from orders
+group by city
+order by count(city) desc
+Limit 1;
+
+-- 2. Which customer ordered the most freuqently?
+select count(Customer_ID) as orders, customer.Customer_Name
+from customer
+inner join orders
+using(Customer_ID)
+group by Customer_ID
+order by count(Customer_ID) desc
+Limit 1;
+
+-- 3. Which customer ordered the most product by sale(sum)?
+select sum(Sales), customer.Customer_Name
+from orders
+left join customer
+using(Customer_ID)
+group by Customer_ID
+order by sum(Sales) desc
+Limit 1;
+
+-- 4. Filter  out the delivery mode which created the highest number of product orders?
+select count(distinct Order_ID) as orders, Ship_Mode
+from orders
+group by Ship_Mode
+order by count(distinct Order_ID)
+Limit 1;
+
+5. Filter out all customer names with their sale revenues without duplcation(Join left)?
+
+select Customer_Name, sum(Sales) as Total_sales
+from customer
+left join orders
+using(Customer_ID)
+group by Customer_Name
+order by sum(Sales) desc;
+
+6. Show the number of products by category in ascending order?
+select count(Product_ID) as Products, Category
+from product
+group by Category
+order by count(Product_ID) asc;
+
+7. Show all category with their total sales in descending order?
+Select Category, round(sum(Sales)) as Total_sales
+from product
+left join orders
+using(Product_ID)
+group by Category
+order by round(sum(Sales)) desc;
+
+8. Which state had the highest profit in US?
+select State, round(sum(Profit))
+from orders
+where country like "United States"
+group by State
+order by round(sum(Profit)) desc
+Limit 1;
+
+9. How many Nokia orders happened in US?
+select "United States" as Country, "Nokia" as Brand, count(distinct Order_ID) as Number_of_orders
+from orders
+Left join product
+Using (Product_ID)
+Where Product_Name like '%Nokia%' and Country like "United States"
+group by "Nokia", "United States";
