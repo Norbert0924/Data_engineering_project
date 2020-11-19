@@ -1,7 +1,7 @@
 # OPERATIONAL LAYER
 
 
-In order to create 
+In order to create my dataset I used 
 
 create schema assignment;
 use assignment;
@@ -44,10 +44,7 @@ Product_Name varchar(200),
 Primary key(Product_ID));
 
 
-We just created the tables and we need to fill in with data. This time we will load a csv file into the table. 
-For security reason, CSV loading is limited, so you need to copy the CSV file in a place indicated by this command:
-
-Then load CSV data into the table with this command:
+After creating schemas, the tables are still empty. We need to fill in with data from CSV into the table:
 
 
 LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/orders.csv'
