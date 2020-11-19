@@ -1,0 +1,78 @@
+# OPERATIONAL LAYER
+
+
+In order to create 
+
+create schema assignment;
+use assignment;
+
+Create table orders
+(Row_ID integer, 
+Order_ID varchar(40) not null,
+Order_Date date,
+Ship_Date date,
+Ship_Mode varchar(40),
+Customer_ID varchar(40),
+Postal_Code varchar(40),
+City varchar(40),
+State varchar(40),
+Country varchar(40),
+Region varchar(40),
+Market varchar(40),
+Product_ID varchar(40),
+Sales float,
+Quantity integer,
+Discount float,
+Profit float,
+Shipping_Cost float,
+Order_Priority varchar(20), 
+Primary key(Order_ID));
+
+
+create table customer
+(Customer_ID varchar(40),
+Customer_Name varchar(60),
+Segment varchar(60),
+Primary key(Customer_ID));
+
+
+create table product
+(Product_ID varchar(40),
+Category varchar(20),
+Sub_Category varchar(20),
+Product_Name varchar(200),
+Primary key(Product_ID));
+
+
+We just created the tables and we need to fill in with data. This time we will load a csv file into the table. 
+For security reason, CSV loading is limited, so you need to copy the CSV file in a place indicated by this command:
+
+Then load CSV data into the table with this command:
+
+
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/orders.csv'
+INTO TABLE orders
+FIELDS TERMINATED BY ';'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES
+(Row_ID, Order_ID, Order_Date, Ship_Date, Ship_Mode, Customer_ID, Postal_Code, City, State, Country, Region, Market, Product_ID, @v_Sales, Quantity, @v_Discount, @v_Profit, @v_Shipping_Cost, Order_Priority)
+SET
+Sales = CONVERT(REPLACE(@v_Sales, ',', '.'), FLOAT),
+Discount = CONVERT(REPLACE(@v_Discount, ',', '.'), FLOAT),
+Profit = CONVERT(REPLACE(@v_Profit, ',', '.'), FLOAT),
+Shipping_Cost = CONVERT(REPLACE(@v_Shipping_Cost, ',', '.'), FLOAT)
+;
+
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/product.csv'
+INTO TABLE product
+FIELDS TERMINATED BY ';'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES
+(Product_ID, Category, Sub_Category, Product_Name);
+
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/customer.csv'
+INTO TABLE customer
+FIELDS TERMINATED BY ';'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES
+(Customer_ID, Customer_Name, Segment);
