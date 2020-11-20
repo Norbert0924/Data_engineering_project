@@ -323,22 +323,27 @@ select * from segment_vs_category_profit;
 Segment		Category	Profit
 Consumer	Furniture	199.32
 ```
-# ETL PIPLINE
+### Stored procedure
 
-DELIMITER //                               # átállítjuk a "parancs-elválasztót" ;-ról //-re hogy ne akadjon el a procedure létrehozásunk a begin utáni első parancs végén.
-CREATE PROCEDURE Getordersbycountry(       # procedure létrehozás + név
-in Country_name Varchar(40)                # létrehozunk egy country_name nevű varchar típusu paramétert amivel BEFELÉ tudunk adatokat vinni
+This stored procedure was created in order to get information for different countries. 
+Input: Country Name
+
+```sql
+DELIMITER //                               
+CREATE PROCEDURE Getordersbycountry(       
+in Country_name Varchar(40)                
 )
-BEGIN                                      # begin utáni parancsok futnak le a procedure hívás esetén
+BEGIN                                      
 	SELECT 
     *
     FROM orders
-    where Country like Country_name;       # szimpla select. A Country oszlop értékének annyinak kell lennie mint a country_name paraméternek  
-END //                                     # end-el jelezzük hogy itt ér véget a proceduránk
+    where Country like Country_name;        
+END //                                     
 DELIMITER ;       
 
 
 call Getordersbycountry('United States');
+```
 
 ## Trigger
 
