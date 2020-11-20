@@ -7,7 +7,8 @@ My chosen dataset was from: https://raw.githubusercontent.com/Norbert0924/DE_SQL
 Source: [Link for original dataset](https://data.world/tableauhelp/superstore-data-sets)
 
 
-In order to create my relational dataset I created the following tables such as orders, customer and product. My analysis is based on these three tables in order to get better insight into the business.
+In order to create my relational dataset I created the following tables such as orders, customer and product.
+My analysis is based on these three tables in order to get better insight into the business.
 
 ### Orders
 ```sql
@@ -147,8 +148,6 @@ IGNORE 1 LINES
 
 # ANALYTICS
 
-## Analytical layer 
-
 
 After creating the relational tables, I intended to answer some meaningful questions which could be used for management decision making.
 
@@ -184,7 +183,7 @@ using(Customer_ID)
 group by Customer_ID
 order by round(sum(Sales)) desc
 Limit 1;
--- Answer:  12182	Adrian Barton
+-- Answer: 12182 Adrian Barton
 ```
 ```sql
 4. Select the delivery mode which created the highest number of product orders?
@@ -194,7 +193,7 @@ from orders
 group by Ship_Mode
 order by count(distinct Order_ID) desc
 Limit 1;
--- Answer:  14221	Standard Class
+-- Answer: 14221 Standard Class
 ```
 ```sql
 5. Select the customer name with the highest sale revenues without duplcation(Join left)?
@@ -206,10 +205,11 @@ using(Customer_ID)
 group by Customer_Name
 order by round(sum(Sales)) desc
 Limit 1;
--- Answer: Christopher Conant	34004
+-- Answer: Christopher Conant 34004
 ```
 ```sql
 6. Show the number of products by category in ascending order?
+
 select count(Product_ID) as Products, Category
 from product
 group by Category
@@ -221,6 +221,7 @@ order by count(Product_ID) asc;
 ```
 ```sql
 7. Show all category with their total sales in descending order?
+
 Select Category, round(sum(Sales)) as Total_sales
 from product
 left join orders
@@ -230,20 +231,22 @@ order by round(sum(Sales)) desc;
 -- Answer: 
 -- Technology	4065892
 -- Furniture	3517316
--- Office Supplies	2712760
+-- Office Supplies 2712760
 ```
 ```sql
 8. Which state had the highest profit in US?
+
 select State, round(sum(Profit))
 from orders
 where country like "United States"
 group by State
 order by round(sum(Profit)) desc
 Limit 1;
--- Answer: California	30132
+-- Answer: California 30132
 ```
 ```sql
 9. How many Nokia orders happened in US?
+
 select "United States" as Country, "Nokia" as Brand, count(distinct Order_ID) as Number_of_orders
 from orders
 Left join product
@@ -253,17 +256,25 @@ group by "Nokia", "United States";
 -- Answer: United States Nokia 4
 ```
 
-## 
+Conclusion:
+
+It can be seen that New York had the highest number of orders and California had the highest profit in US.
+Office Supplies accounted for the highest proportion of the total number of orders, therefore, the highest total sales as well.
+Arthur Prichep had ordered most frequently (23 times) in 2016, however,  Christopher Conant had the highest total sales.
+Standard Class is the mostly used the delivery mode.
+
+
+
 
 
 ## DATA MART 
 ### Create Views
 
 In order to represent view function two questions were asked. 
-
+The view function is very useful and time-consuming form of select command. The previous created more complex select command can be selected only with one view command in the future.
 #### View1:
 -- Does US have higher Sales than Albania?
-
+```
 select Country, round(sum(Sales))
 from orders
 where Country like "United States"  or Country like "Albania"
@@ -280,10 +291,11 @@ select *  from country_vs_sales;
 Country         round(sum(Sales))
 United States	938521
 Albania	        3525
+```
 
 #### View2
 -- Which segment in which product category has the highest profit?
-
+```sql
 select Segment, Category, Profit
 from orders
 left join customer
@@ -293,8 +305,9 @@ using(Product_ID)
 Group by Segment, Category
 Order by Profit desc
 Limit 1;
-
--- View 2:
+```sql
+View 2
+```sql
 create view segment_vs_category_profit
 as select Segment, Category, Profit
 from orders
@@ -302,12 +315,14 @@ left join customer
 using(Customer_ID)
 left join product
 using(Product_ID)
-Group by Segment, Category
-Order by Profit desc
-Limit 1;
+Group by Segment
+Order by Profit desc;
 
 select * from segment_vs_category_profit;
-
+--Answer:
+Segment		Category	Profit
+Consumer	Furniture	199.32
+```
 # ETL PIPLINE
 
 DELIMITER //                               # átállítjuk a "parancs-elválasztót" ;-ról //-re hogy ne akadjon el a procedure létrehozásunk a begin utáni első parancs végén.
