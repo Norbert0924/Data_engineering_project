@@ -14,22 +14,25 @@ My analysis is based on these three tables in order to get better insight into t
 ```sql
 This table includes all the orders data in 2016 with the following columns:
 
-Row_ID	
-Order_ID - Primary Key	
-Order_Date	
-Ship_Date	
-Ship_Mode	
-Customer_ID	
-Postal_Code	
-City	
-State	
-Country	Region	
-Market	Product_ID	
-Sales	Quantity	
-Discount	
-Profit	
-Shipping_Cost	
-Order_Priority
+- Row_ID	
+- Order_ID - Primary Key	
+- Order_Date	
+- Ship_Date	
+- Ship_Mode	
+- Customer_ID	
+- Postal_Code	
+- City	
+- State	
+- Country	
+- Region	
+- Market	
+- Product_ID	
+- Sales	
+- Quantity	
+- Discount	
+- Profit	
+- Shipping_Cost	
+- Order_Priority
 
 Row numbers: 25.728
 ```
@@ -37,9 +40,9 @@ Row numbers: 25.728
 ```sql
 This table includes all the customer data in 2016 with the following columns:
 
-Customer_ID - Primary Key
-Customer_Name	
-Segment
+- Customer_ID - Primary Key
+- Customer_Name	
+- Segment
 
 Row numbers: 17.416
 ```
@@ -47,10 +50,10 @@ Row numbers: 17.416
 ```sql
 This table includes all the product data in 2016 with the following columns:
 
-Product_ID - Primary Key
-Category	
-Sub_Category	
-Product_Name
+- Product_ID - Primary Key
+- Category	
+- Sub_Category	
+- Product_Name
 
 Row numbers: 3.789
 ```
