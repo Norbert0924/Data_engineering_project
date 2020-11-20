@@ -158,7 +158,7 @@ IGNORE 1 LINES
 After creating the relational tables, I intended to answer some meaningful questions which could be used for management decision making.
 
 ```sql
-1. Which city had the most orders?
+Which city had the most orders?
 
 select count(city) as Number_of_orders, city
 from orders
@@ -168,7 +168,7 @@ Limit 1;
 -- Answer: 407_New York City 
 ```
 ```sql
-2. Which customer ordered the most freuqently?
+Which customer ordered the most freuqently?
 
 select count(Customer_ID) as orders, customer.Customer_Name
 from customer
@@ -180,7 +180,7 @@ Limit 1;
 -- Answer: 23 Arthur Prichep
 ```
 ```sql
-3. Which customer ordered the most product by sale(sum)?
+Which customer ordered the most product by sale(sum)?
 
 select round(sum(Sales)), customer.Customer_Name
 from orders
@@ -192,7 +192,7 @@ Limit 1;
 -- Answer: 12182 Adrian Barton
 ```
 ```sql
-4. Select the delivery mode which created the highest number of product orders?
+Select the delivery mode which created the highest number of product orders?
 
 select count(distinct Order_ID) as orders, Ship_Mode
 from orders
@@ -202,7 +202,7 @@ Limit 1;
 -- Answer: 14221 Standard Class
 ```
 ```sql
-5. Select the customer name with the highest sale revenues without duplcation(Join left)?
+Select the customer name with the highest sale revenues without duplcation(Join left)?
 
 select Customer_Name, round(sum(Sales)) as Total_sales
 from customer
@@ -214,7 +214,7 @@ Limit 1;
 -- Answer: Christopher Conant 34004
 ```
 ```sql
-6. Show the number of products by category in ascending order?
+Show the number of products by category in ascending order?
 
 select count(Product_ID) as Products, Category
 from product
@@ -226,7 +226,7 @@ order by count(Product_ID) asc;
 -- 2071	Office Supplies
 ```
 ```sql
-7. Show all category with their total sales in descending order?
+Show all category with their total sales in descending order?
 
 Select Category, round(sum(Sales)) as Total_sales
 from product
@@ -240,7 +240,7 @@ order by round(sum(Sales)) desc;
 -- Office Supplies 2712760
 ```
 ```sql
-8. Which state had the highest profit in US?
+Which state had the highest profit in US?
 
 select State, round(sum(Profit))
 from orders
@@ -251,7 +251,7 @@ Limit 1;
 -- Answer: California 30132
 ```
 ```sql
-9. How many Nokia orders happened in US?
+How many Nokia orders happened in US?
 
 select "United States" as Country, "Nokia" as Brand, count(distinct Order_ID) as Number_of_orders
 from orders
