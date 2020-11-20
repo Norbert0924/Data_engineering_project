@@ -49,8 +49,11 @@ After creating schemas, the tables are still empty. We need to fill in with data
 
 The following CSV data tables were put into this command:
 
-https://github.com/Norbert0924/DE_SQL_CLASS/blob/main/product.csv
+
 https://github.com/Norbert0924/DE_SQL_CLASS/blob/main/orders.csv
+
+https://github.com/Norbert0924/DE_SQL_CLASS/blob/main/product.csv
+
 https://github.com/Norbert0924/DE_SQL_CLASS/blob/main/customer.csv
 
 
@@ -184,7 +187,8 @@ group by "Nokia", "United States";
 -- Answer: United States	Nokia	4
 
 
-## Views:
+## DATA MART 
+### Create Views
 
 In order to represent view function two questions were asked. 
 
@@ -230,6 +234,17 @@ Order by Profit desc
 Limit 1;
 
 select * from segment_vs_category_profit;
+
+
+# Extra part
+
+Which country has the highest and lowest Shipping_Cost? (find them with only one select command)
+
+SELECT
+	(SELECT Country FROM Orders WHERE Shipping_Cost is not null and Shipping_Cost <> 0 ORDER BY Shipping_Cost asc LIMIT 1) AS lowest_shipping_cost,
+    (SELECT Country FROM Orders ORDER BY Shipping_Cost desc LIMIT 1) AS highest_shipping_cost;
+
+
 
 
 
