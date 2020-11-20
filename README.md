@@ -374,6 +374,7 @@ DELIMITER ;
 ```
 
 ## Insert a row into orders
+
 ```sql
 describe orders;
 
@@ -383,9 +384,11 @@ select * from
  all_profit;
 ```
 
-```sql
-Which country has the highest and lowest Shipping_Cost? (find them with only one select command)
+## Subselect
 
+Which country has the highest and lowest Shipping_Cost? (find them with only one select)?
+
+```sql
 SELECT
 	(SELECT Country FROM Orders WHERE Shipping_Cost is not null and Shipping_Cost <> 0 ORDER BY Shipping_Cost asc LIMIT 1) AS lowest_shipping_cost,
     (SELECT Country FROM Orders ORDER BY Shipping_Cost desc LIMIT 1) AS highest_shipping_cost;
@@ -393,6 +396,7 @@ Answer:
 -- lowest_shipping_cost  highest_shipping_cost
 -- United States         Australia
 ```
+It can be seen that US has the lowest shipping cost in comparison to Australia which has the highest cost.
 
 
 
