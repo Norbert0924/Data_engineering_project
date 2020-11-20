@@ -84,7 +84,7 @@ Order_Priority varchar(20),
 Primary key(Order_ID));
 ```
 Access to orders table: 
-[orders.csv]https://github.com/Norbert0924/DE_SQL_CLASS/blob/main/orders.csv
+[orders.csv](https://github.com/Norbert0924/DE_SQL_CLASS/blob/main/orders.csv)
 
 ```sql
 create table customer
@@ -95,7 +95,7 @@ Primary key(Customer_ID));
 ```
 
 Access to customer table:
-[customer.csv]https://github.com/Norbert0924/DE_SQL_CLASS/blob/main/customer.csv
+[customer.csv](https://github.com/Norbert0924/DE_SQL_CLASS/blob/main/customer.csv)
 
 ```sql
 create table product
@@ -106,7 +106,7 @@ Product_Name varchar(200),
 Primary key(Product_ID));
 ```
 Access to product table:
-[product.csv]https://github.com/Norbert0924/DE_SQL_CLASS/blob/main/product.csv
+[product.csv](https://github.com/Norbert0924/DE_SQL_CLASS/blob/main/product.csv)
 
 
 After creating schemas, the tables are still empty. We need to fill in with data from CSVs into the tables:
