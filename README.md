@@ -255,17 +255,12 @@ Where Product_Name like '%Nokia%' and Country like "United States"
 group by "Nokia", "United States";
 -- Answer: United States Nokia 4
 ```
-
 Conclusion:
 
 It can be seen that New York had the highest number of orders and California had the highest profit in US.
 Office Supplies accounted for the highest proportion of the total number of orders, therefore, the highest total sales as well.
 Arthur Prichep had ordered most frequently (23 times) in 2016, however,  Christopher Conant had the highest total sales.
 Standard Class is the mostly used the delivery mode.
-
-
-
-
 
 ## DATA MART 
 ### Create Views
@@ -292,7 +287,6 @@ Country         round(sum(Sales))
 United States	938521
 Albania	        3525
 ```
-
 #### View2
 -- Which segment in which product category has the highest profit?
 ```sql
@@ -345,8 +339,9 @@ DELIMITER ;
 call Getordersbycountry('United States');
 ```
 
-## Trigger
+### Trigger
 
+This trigger was created when a new order happens.
 
 ```sql
 create table all_profit(
@@ -372,10 +367,10 @@ values(now(),  @all_profit);
 END $$
 
 DELIMITER ;
-
+```
 ### Insert a row into orders
 describe orders;
-
+```sql
 insert into assignment.orders (Order_ID, Order_Date, Profit)
 values ('ZA-2020-TS11205146-42061','2021-09-20', 12345);
 select * from
@@ -393,7 +388,6 @@ SELECT
 Answer:
 -- lowest_shipping_cost  highest_shipping_cost
 -- United States         Australia
-
 ```
 
 
