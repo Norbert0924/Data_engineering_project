@@ -192,7 +192,7 @@ Limit 1;
 -- Answer: 12182 Adrian Barton
 ```
 ```sql
-Select the delivery mode which created the highest number of product orders?
+Show the delivery mode which created the highest number of product orders?
 
 select count(distinct Order_ID) as orders, Ship_Mode
 from orders
@@ -202,7 +202,7 @@ Limit 1;
 -- Answer: 14221 Standard Class
 ```
 ```sql
-Select the customer name with the highest sale revenues without duplcation(Join left)?
+Show the customer name with the highest sale revenues without duplcation(Join left)?
 
 select Customer_Name, round(sum(Sales)) as Total_sales
 from customer
