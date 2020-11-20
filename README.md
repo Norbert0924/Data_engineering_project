@@ -373,7 +373,8 @@ END $$
 DELIMITER ;
 ```
 
-## Insert a row into orders
+### Insert a row into orders
+
 
 ```sql
 describe orders;
