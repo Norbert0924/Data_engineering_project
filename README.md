@@ -295,6 +295,7 @@ select * from
 
 # Extra part
 
+```sql
 Which country has the highest and lowest Shipping_Cost? (find them with only one select command)
 
 SELECT
@@ -303,6 +304,10 @@ SELECT
     
 -- lowest_shipping_cost  highest_shipping_cost
 -- United States         Australia
+
+```
+
+
 
 
 
