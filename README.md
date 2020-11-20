@@ -1,7 +1,8 @@
 # Operational layer
 
+My chosen dataset was from: https://raw.githubusercontent.com/Norbert0924/DE_SQL_CLASS/main/Global%20Superstore_original_dataset.csv
 
-In order to create my relational dataset I created the following tables:
+In order to create my relational dataset I created the following tables such as orders, customer and product. My analysis is based on these three tables in order to get better insight into the business.
 
 create schema assignment;
 use assignment;
@@ -80,14 +81,16 @@ LINES TERMINATED BY '\r\n'
 IGNORE 1 LINES
 (Customer_ID, Customer_Name, Segment);
 
-
-
 ### Database diagram
+
 
 
 # ANALYTICS
 
-## Quetions:
+## Questions:
+
+After creating the relational tables, I intended to answer some meaningful questions which could be used for management decision making.
+
 
 1. Which city had the most orders?
 
@@ -171,7 +174,6 @@ order by round(sum(Profit)) desc
 Limit 1;
 -- Answer: California	30132
 
-
 9. How many Nokia orders happened in US?
 select "United States" as Country, "Nokia" as Brand, count(distinct Order_ID) as Number_of_orders
 from orders
@@ -182,9 +184,10 @@ group by "Nokia", "United States";
 -- Answer: United States	Nokia	4
 
 
-## Recommended questions:
+## Views:
 
-I 
+In order to represent view function two questions were asked. 
+
 -- View1:
 -- Does US have higher Sales than Albania?
 
@@ -227,3 +230,7 @@ Order by Profit desc
 Limit 1;
 
 select * from segment_vs_category_profit;
+
+
+
+
