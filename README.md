@@ -187,12 +187,15 @@ group by "Nokia", "United States";
 -- Answer: United States	Nokia	4
 
 
+## 
+
+
 ## DATA MART 
 ### Create Views
 
 In order to represent view function two questions were asked. 
 
--- View1:
+#### View1:
 -- Does US have higher Sales than Albania?
 
 select Country, round(sum(Sales))
@@ -208,7 +211,11 @@ group by Country;
 
 select *  from country_vs_sales;
 
--- View2
+Country         round(sum(Sales))
+United States	938521
+Albania	        3525
+
+#### View2
 -- Which segment in which product category has the highest profit?
 
 select Segment, Category, Profit
@@ -235,6 +242,56 @@ Limit 1;
 
 select * from segment_vs_category_profit;
 
+# ETL PIPLINE
+
+DELIMITER //                               # átállítjuk a "parancs-elválasztót" ;-ról //-re hogy ne akadjon el a procedure létrehozásunk a begin utáni első parancs végén.
+CREATE PROCEDURE Getordersbycountry(       # procedure létrehozás + név
+in Country_name Varchar(40)                # létrehozunk egy country_name nevű varchar típusu paramétert amivel BEFELÉ tudunk adatokat vinni
+)
+BEGIN                                      # begin utáni parancsok futnak le a procedure hívás esetén
+	SELECT 
+    *
+    FROM orders
+    where Country like Country_name;       # szimpla select. A Country oszlop értékének annyinak kell lennie mint a country_name paraméternek  
+END //                                     # end-el jelezzük hogy itt ér véget a proceduránk
+DELIMITER ;       
+
+
+call Getordersbycountry('United States');
+
+## Trigger
+
+create table all_profit(
+ID integer not null auto_increment,
+Delivery_date datetime not null,
+Profit integer not null,
+primary key(ID));
+
+describe all_profit;
+
+drop trigger if exists profit_change;
+
+DELIMITER $$
+CREATE TRIGGER profit_change
+after insert 
+on orders 
+for each row 
+begin 
+set @all_profit := (select sum(Profit)
+from orders);
+insert into all_profit (Delivery_date, Profit)
+values(now(),  @all_profit);
+END $$
+
+DELIMITER ;
+
+### Insert a row into orders
+describe orders;
+
+insert into assignment.orders (Order_ID, Order_Date, Profit)
+values ('ZA-2020-TS11205146-42061','2021-09-20', 12345);
+select * from
+ all_profit;
 
 # Extra part
 
@@ -243,7 +300,9 @@ Which country has the highest and lowest Shipping_Cost? (find them with only one
 SELECT
 	(SELECT Country FROM Orders WHERE Shipping_Cost is not null and Shipping_Cost <> 0 ORDER BY Shipping_Cost asc LIMIT 1) AS lowest_shipping_cost,
     (SELECT Country FROM Orders ORDER BY Shipping_Cost desc LIMIT 1) AS highest_shipping_cost;
-
+    
+-- lowest_shipping_cost  highest_shipping_cost
+-- United States         Australia
 
 
 
