@@ -6,6 +6,9 @@ My chosen dataset was from: https://raw.githubusercontent.com/Norbert0924/DE_SQL
 
 Source: [Link for original dataset](https://data.world/tableauhelp/superstore-data-sets)
 
+### Importance of the analysis 
+
+The main purpose of this analysis was to get better insight into the given dataset and provide a brief summary for management decision making in order to indetify key points amongst order, customer and product tables. As a result of this, the company can highlight the different key segments, customers and product range to improve and expand the operation.
 
 In order to create my relational dataset I created the following tables such as orders, customer and product.
 My analysis is based on these three tables in order to get better insight into the business.
@@ -62,7 +65,7 @@ Row numbers: 3.789
 create schema assignment;
 use assignment;
 ```
-### Table Creation 
+### Create tables
  
 ```sql
 Create table orders
@@ -386,6 +389,8 @@ select * from
 ```
 
 ## Subselect
+
+
 
 Which country has the highest and lowest Shipping_Cost? (find them with only one select)?
 
