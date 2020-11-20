@@ -144,8 +144,6 @@ IGNORE 1 LINES
 ```
 ### Database diagram
 
-
-
 # ANALYTICS
 
 
@@ -268,7 +266,7 @@ Standard Class is the mostly used the delivery mode.
 In order to represent view function two questions were asked. 
 The view function is very useful and time-consuming form of select command. The previous created more complex select command can be selected only with one view command in the future.
 #### View1:
--- Does US have higher Sales than Albania?
+Does US have higher Sales than Albania?
 ```
 select Country, round(sum(Sales))
 from orders
@@ -288,7 +286,7 @@ United States	938521
 Albania	        3525
 ```
 #### View2
--- Which segment in which product category has the highest profit?
+Which segment in which product category has the highest profit?
 ```sql
 select Segment, Category, Profit
 from orders
@@ -317,7 +315,7 @@ select * from segment_vs_category_profit;
 Segment		Category	Profit
 Consumer	Furniture	199.32
 ```
-### Stored procedure
+## Stored procedure
 
 This stored procedure was created in order to get information for different countries. 
 Input: Country Name
@@ -338,8 +336,9 @@ DELIMITER ;
 
 call Getordersbycountry('United States');
 ```
+# Extra part
 
-### Trigger
+## Trigger
 
 This trigger was created when a new order happens.
 
@@ -368,7 +367,7 @@ END $$
 
 DELIMITER ;
 ```
-### Insert a row into orders
+## Insert a row into orders
 describe orders;
 ```sql
 insert into assignment.orders (Order_ID, Order_Date, Profit)
@@ -376,8 +375,6 @@ values ('ZA-2020-TS11205146-42061','2021-09-20', 12345);
 select * from
  all_profit;
 ```
-
-# Extra part
 
 ```sql
 Which country has the highest and lowest Shipping_Cost? (find them with only one select command)
