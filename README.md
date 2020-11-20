@@ -1,4 +1,6 @@
-# Operational layer
+# Term Project-Norbert Szilvasi
+```sql
+## Operational layer
 
 My chosen dataset was from: https://raw.githubusercontent.com/Norbert0924/DE_SQL_CLASS/main/Global%20Superstore_original_dataset.csv
 
@@ -7,15 +9,58 @@ Source: [Link for original dataset](https://data.world/tableauhelp/superstore-da
 
 In order to create my relational dataset I created the following tables such as orders, customer and product. My analysis is based on these three tables in order to get better insight into the business.
 
-### Create Schema 
+### Orders
 
+This table includes all the orders data in 2016 with the following columns:
+
+Row_ID	- Primary Key
+Order_ID	
+Order_Date	
+Ship_Date	
+Ship_Mode	
+Customer_ID	
+Postal_Code	
+City	
+State	
+Country	Region	
+Market	Product_ID	
+Sales	Quantity	
+Discount	
+Profit	
+Shipping_Cost	
+Order_Priority
+
+Row numbers: 25.728
+
+### Customer
+
+This table includes all the customer data in 2016 with the following columns:
+
+Customer_ID - Primary Key
+Customer_Name	
+Segment
+
+Row numbers: 17.416
+
+### Product
+
+This table includes all the product data in 2016 with the following columns:
+
+Product_ID - Primary Key
+Category	
+Sub_Category	
+Product_Name
+
+Row numbers: 3789
+```
+### Create Schema 
 ```sql
 create schema assignment;
 use assignment;
 ```
-
-
-
+### Table Creation 
+ 
+```sql
 Create table orders
 (Row_ID integer, 
 Order_ID varchar(40) not null,
@@ -60,6 +105,7 @@ Primary key(Product_ID));
 
 Access to product table:
 [prdocut.csv](https://github.com/Norbert0924/DE_SQL_CLASS/blob/main/product.csv)
+```
 
 After creating schemas, the tables are still empty. We need to fill in with data from CSVs into the tables:
 
