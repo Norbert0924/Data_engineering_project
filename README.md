@@ -261,6 +261,8 @@ call Getordersbycountry('United States');
 
 ## Trigger
 
+
+```sql
 create table all_profit(
 ID integer not null auto_increment,
 Delivery_date datetime not null,
@@ -292,6 +294,7 @@ insert into assignment.orders (Order_ID, Order_Date, Profit)
 values ('ZA-2020-TS11205146-42061','2021-09-20', 12345);
 select * from
  all_profit;
+```
 
 # Extra part
 
@@ -301,11 +304,13 @@ Which country has the highest and lowest Shipping_Cost? (find them with only one
 SELECT
 	(SELECT Country FROM Orders WHERE Shipping_Cost is not null and Shipping_Cost <> 0 ORDER BY Shipping_Cost asc LIMIT 1) AS lowest_shipping_cost,
     (SELECT Country FROM Orders ORDER BY Shipping_Cost desc LIMIT 1) AS highest_shipping_cost;
-    
+Answer:
 -- lowest_shipping_cost  highest_shipping_cost
 -- United States         Australia
 
 ```
+
+
 
 
 
