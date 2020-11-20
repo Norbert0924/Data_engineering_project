@@ -2,6 +2,10 @@
 
 My chosen dataset was from: https://raw.githubusercontent.com/Norbert0924/DE_SQL_CLASS/main/Global%20Superstore_original_dataset.csv
 
+Source: [Link for original dataset](https://data.world/tableauhelp/superstore-data-sets)
+
+
+
 In order to create my relational dataset I created the following tables such as orders, customer and product. My analysis is based on these three tables in order to get better insight into the business.
 
 create schema assignment;
