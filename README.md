@@ -51,7 +51,7 @@ Category
 Sub_Category	
 Product_Name
 
-Row numbers: 3789
+Row numbers: 3.789
 ```
 ### Create Schema 
 ```sql
@@ -110,11 +110,10 @@ Access to product table:
 
 
 After creating schemas, the tables are still empty. We need to fill in with data from CSVs into the tables:
-
 The following CSV data tables were put into this command:
 
-
-
+##### Load data 
+```sql
 LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/orders.csv'
 INTO TABLE orders
 FIELDS TERMINATED BY ';'
@@ -141,7 +140,7 @@ FIELDS TERMINATED BY ';'
 LINES TERMINATED BY '\r\n'
 IGNORE 1 LINES
 (Customer_ID, Customer_Name, Segment);
-
+```
 ### Database diagram
 
 
