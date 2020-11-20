@@ -144,7 +144,9 @@ IGNORE 1 LINES
 ```
 ### Database diagram
 
-# ANALYTICS
+[Link](https://github.com/Norbert0924/DE_SQL_CLASS/blob/main/dataset.png)
+
+## ANALYTICS
 
 
 After creating the relational tables, I intended to answer some meaningful questions which could be used for management decision making.
