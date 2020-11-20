@@ -5,11 +5,16 @@ My chosen dataset was from: https://raw.githubusercontent.com/Norbert0924/DE_SQL
 Source: [Link for original dataset](https://data.world/tableauhelp/superstore-data-sets)
 
 
-
 In order to create my relational dataset I created the following tables such as orders, customer and product. My analysis is based on these three tables in order to get better insight into the business.
 
+### Create Schema 
+
+```sql
 create schema assignment;
 use assignment;
+```
+
+
 
 Create table orders
 (Row_ID integer, 
@@ -60,12 +65,6 @@ After creating schemas, the tables are still empty. We need to fill in with data
 
 The following CSV data tables were put into this command:
 
-
-https://github.com/Norbert0924/DE_SQL_CLASS/blob/main/orders.csv
-
-https://github.com/Norbert0924/DE_SQL_CLASS/blob/main/product.csv
-
-https://github.com/Norbert0924/DE_SQL_CLASS/blob/main/customer.csv
 
 
 LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/orders.csv'
