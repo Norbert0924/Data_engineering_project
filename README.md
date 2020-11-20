@@ -82,32 +82,32 @@ Profit float,
 Shipping_Cost float,
 Order_Priority varchar(20), 
 Primary key(Order_ID));
-
+```
 Access to orders table: 
-https://raw.githubusercontent.com/Norbert0924/DE_SQL_CLASS/main/DE_SQL_CLASS/blob/main/orders.csv
+[orders.csv]https://github.com/Norbert0924/DE_SQL_CLASS/blob/main/orders.csv
 
-
-
+```sql
 create table customer
 (Customer_ID varchar(40),
 Customer_Name varchar(60),
 Segment varchar(60),
 Primary key(Customer_ID));
+```
 
 Access to customer table:
-https://github.com/Norbert0924/DE_SQL_CLASS/blob/main/customer.csv
+[customer.csv]https://github.com/Norbert0924/DE_SQL_CLASS/blob/main/customer.csv
 
-
+```sql
 create table product
 (Product_ID varchar(40),
 Category varchar(20),
 Sub_Category varchar(20),
 Product_Name varchar(200),
 Primary key(Product_ID));
-
-Access to product table:
-https://github.com/Norbert0924/DE_SQL_CLASS/blob/main/product.csv
 ```
+Access to product table:
+[product.csv]https://github.com/Norbert0924/DE_SQL_CLASS/blob/main/product.csv
+
 
 After creating schemas, the tables are still empty. We need to fill in with data from CSVs into the tables:
 
