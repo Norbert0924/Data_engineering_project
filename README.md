@@ -396,7 +396,16 @@ as select Country, Segment, Category, round(sum(Profit)) as Total_Profit
  order by Total_Profit desc;
 
 select * from segment_vs_category_profit_US;
+
+
+---Answer:
+Country		Segment		Category	Total_Profit
+United States	Consumer	Office Supplies	61465
+United States	Consumer	Technology	52950
+United States	Consumer	Furniture	7621
+
 ```
+Using view we can select easily any information becasue one denormalized table was created throughout ETL procedure which makes it possible to select information from one table which contains the necessary information. This enables us quicker selection and eliminates the need for join-s because the big table already includes everything.
 
 ## Stored procedure
 
