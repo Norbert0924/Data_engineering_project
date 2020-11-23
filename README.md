@@ -305,7 +305,7 @@ using(Product_ID)
 Group by Segment, Category
 Order by Profit desc
 Limit 1;
-```sql
+
 View 2
 ```sql
 create view segment_vs_category_profit
