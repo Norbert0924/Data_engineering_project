@@ -308,15 +308,18 @@ Limit 1;
 
 View 2
 
+DROP VIEW IF EXISTS segment_vs_category_profit;
+
 create view segment_vs_category_profit
-as select Segment, Category, Profit
+as select Segment, Category, round(sum(Profit))
 from orders
 left join customer
 using(Customer_ID)
 left join product
 using(Product_ID)
 Group by Segment
-Order by Profit desc;
+Order by round(sum(Profit)) desc;
+
 
 select * from segment_vs_category_profit;
 --Answer:
