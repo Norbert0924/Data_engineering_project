@@ -330,7 +330,7 @@ Consumer	Furniture	199.32
 
 ## ETL PROCEDURE:
 
-The analytical layer are built using the three tables in order to have one denormalized table. This denormalized table is used for further analysis.
+The analytical layer are built using the three tables in order to have one denormalized table. We can use the denormalized table easily to get futher information.
 ```sql
 DROP PROCEDURE IF EXISTS getOrdersByCountryWithAllData;
 
