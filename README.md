@@ -326,6 +326,78 @@ select * from segment_vs_category_profit;
 Segment		Category	Profit
 Consumer	Furniture	199.32
 ```
+
+
+## ETL PROCEDURE:
+
+The analytical layer are built using the three tables in order to have one denormalized table. This denormalized table is used for further analysis.
+```sql
+DROP PROCEDURE IF EXISTS getOrdersByCountryWithAllData;
+
+DELIMITER //                               
+CREATE PROCEDURE getOrdersByCountryWithAllData(       
+  in Country_name Varchar(40)                
+)
+BEGIN
+  DROP TABLE IF EXISTS specificCountryOrders;
+
+  CREATE TABLE specificCountryOrders
+	SELECT 
+    orders.Row_ID, 
+    orders.Order_ID,
+    orders.Order_Date,
+    orders.Ship_Date,
+    orders.Ship_Mode,
+    orders.Customer_ID,
+    orders.Postal_Code,
+    orders.City,
+    orders.State,
+    orders.Country,
+    orders.Region,
+    orders.Market,
+    orders.Product_ID,
+    orders.Sales,
+    orders.Quantity,
+    orders.Discount,
+    orders.Profit,
+    orders.Shipping_Cost,
+    orders.Order_Priority,
+    customer.Customer_Name,
+    customer.Segment,
+    product.Category,
+    product.Sub_Category,
+    product.Product_Name
+  FROM orders
+  LEFT JOIN customer
+  ON customer.Customer_ID = orders.Customer_ID
+  LEFT JOIN product
+  ON product.Product_ID = orders.Product_ID
+  where Country like Country_name;        
+END //                                     
+DELIMITER ;       
+
+call getOrdersByCountryWithAllData('United States');
+```
+## Which segment in which product category has the highest profit? ETL procedure
+```sql
+ select Country, Segment, Category, round(sum(Profit)) as Total_Profit
+ from specificCountryOrders
+ group by Category
+ order by Total_Profit desc;
+```
+## View for ETL:
+```sql
+DROP VIEW IF EXISTS segment_vs_category_profit_US;
+
+create view segment_vs_category_profit_US
+as select Country, Segment, Category, round(sum(Profit)) as Total_Profit
+ from specificCountryOrders
+ group by Category
+ order by Total_Profit desc;
+
+select * from segment_vs_category_profit_US;
+```
+
 ## Stored procedure
 
 This stored procedure was created in order to get information for different countries. 
