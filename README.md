@@ -307,7 +307,7 @@ Order by Profit desc
 Limit 1;
 
 View 2
-```sql
+
 create view segment_vs_category_profit
 as select Segment, Category, Profit
 from orders
